@@ -1,2 +1,0 @@
-# swimming-stats
-Results statistics
