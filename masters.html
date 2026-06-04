@@ -94,6 +94,7 @@ td.t{font-variant-numeric:tabular-nums;font-weight:600}
 .pbgrid .tm{font-family:'Fraunces',serif;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
 .chartbox{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px;margin-bottom:14px}
 .chartbox .ct{font-weight:600;font-size:13.5px;margin-bottom:8px}
+.canvas-wrap{position:relative;height:200px;width:100%}
 .legend{font-size:12px;color:var(--muted);margin:2px 0 16px}
 .legend b{color:var(--green)}
 @media(max-width:560px){h1{font-size:25px}.chip b{font-size:18px}}
@@ -226,7 +227,7 @@ function openProfile(i){
   // charts for events with >=2 results
   const multi=evs.filter(k=>byEv[k].length>=2);
   const chartsHtml=multi.map((k,idx)=>{const[d,st]=k.split('|');
-    return `<div class="chartbox"><div class="ct">${evLabel(+d,st)}</div><canvas id="ch${idx}" height="150"></canvas></div>`;}).join('');
+    return `<div class="chartbox"><div class="ct">${evLabel(+d,st)}</div><div class="canvas-wrap"><canvas id="ch${idx}"></canvas></div></div>`;}).join('');
   const legend=multi.length?`<p class="legend">График: ось времени перевёрнута — выше значит быстрее. <b>Зелёная точка</b> — улучшение результата.</p>`:'';
   const former=a.former.length?`<span class="tag">ранее: ${a.former.map(esc).join(', ')}</span>`:'';
   document.getElementById('modal').innerHTML=`
