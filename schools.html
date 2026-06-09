@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Школы и клубы плавания | FISN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #0f4b7d;
+    --primary-light: #1e6cb0;
+    --primary-dark: #0a3559;
+    --accent: #00a8cc;
+    --bg: #f5fbff;
+    --bg-card: #ffffff;
+    --text: #1a2a3a;
+    --text-light: #5a6b7c;
+    --border: #e3eef8;
+    --shadow-sm: 0 2px 8px rgba(15, 75, 125, 0.06);
+    --shadow-md: 0 8px 24px rgba(15, 75, 125, 0.10);
+    --shadow-lg: 0 16px 40px rgba(15, 75, 125, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 168, 204, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+}
+
+.header-back:hover {
+    color: white;
+}
+
+.header h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.header p {
+    font-size: clamp(15px, 2vw, 18px);
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.main {
+    max-width: 1200px;
+    margin: -40px auto 0;
+    padding: 0 20px 80px;
+    position: relative;
+}
+
+.toolbar {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 16px 14px 48px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s;
+    background: var(--bg);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 12px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+.school-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.school-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.school-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.school-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary-light) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.school-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.school-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.school-city {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.school-director {
+    background: var(--bg);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.school-director-label {
+    color: var(--text-light);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.school-director-name {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.school-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+}
+
+.contact-link:hover {
+    background: var(--bg);
+    border-color: var(--primary-light);
+    color: var(--primary);
+    transform: translateX(2px);
+}
+
+.contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 14px;
+}
+
+.contact-icon.phone { background: #16a34a; }
+.contact-icon.email { background: #ea580c; }
+.contact-icon.web { background: #2563eb; }
+
+.contact-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-light);
+    grid-column: 1 / -1;
+}
+
+.no-results-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.no-results-text {
+    font-size: 16px;
+}
+
+@media (max-width: 640px) {
+    .header { padding: 40px 20px 60px; }
+    .stats { gap: 24px; }
+    .toolbar { padding: 14px; }
+    .filters { width: 100%; }
+    .filter-btn { flex: 1; padding: 10px 14px; font-size: 13px; }
+    .school-card { padding: 20px; }
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+}
+
+.footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content">
+        <a href="https://swimmingmoldova.com" class="header-back">
+            ← Вернуться на сайт
+        </a>
+        <h1>Школы и клубы плавания</h1>
+        <p>Спортивные школы и клубы, аффилированные с Федерацией Водных Видов Спорта Молдовы</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number" id="totalCount">12</span>
+                <span class="stat-label">Школ и клубов</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Городов</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <div class="toolbar">
+        <div class="search-box">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Поиск по названию или директору...">
+        </div>
+        <div class="filters" id="cityFilters">
+            <button class="filter-btn active" data-city="all">Все города</button>
+            <button class="filter-btn" data-city="Кишинёв">Кишинёв</button>
+            <button class="filter-btn" data-city="Бельцы">Бельцы</button>
+            <button class="filter-btn" data-city="Тирасполь">Тирасполь</button>
+            <button class="filter-btn" data-city="Рыбница">Рыбница</button>
+        </div>
+    </div>
+
+    <div class="schools-grid" id="schoolsGrid">
+        <!-- Карточки школ -->
+    </div>
+</main>
+
+<footer class="footer">
+    © 2026 Федерация Водных Видов Спорта Молдовы · <a href="https://swimmingmoldova.com">swimmingmoldova.com</a>
+</footer>
+
+<script>
+const schools = [
+    {
+        name: "Centrul Sportiv de Pregătire a Loturilor Naționale",
+        city: "Кишинёв",
+        director: "Ceban Nicolae",
+        phone: "+37322553077",
+        email: "cspln.info@gmail.com",
+        web: "facebook.com/cspln.info",
+        webUrl: "https://facebook.com/cspln.info"
+    },
+    {
+        name: "Școala Sportivă Specializată de Înot mun. Chișinău (MEC)",
+        city: "Кишинёв",
+        director: "Tăruș Gheorghe",
+        phone: "+37367555775",
+        email: "sssinot@gmail.com",
+        web: "facebook.com/SSSinot.MEC",
+        webUrl: "https://facebook.com/SSSinot.MEC"
+    },
+    {
+        name: "Școala sportivă pentru copii și juniori nr. 11",
+        city: "Кишинёв",
+        director: "Postica Sergiu",
+        phone: "+37322331343",
+        email: "scoalasportiva11@gmail.com",
+        web: "facebook.com/profile",
+        webUrl: "https://facebook.com/profile.php?id=100089806157418"
+    },
+    {
+        name: "Școala sportivă specializată la Taekwondo WTF nr. 6",
+        city: "Кишинёв",
+        director: "Gaus Maxim",
+        phone: "+37322746688",
+        email: "sportschoolnr6@gmail.com",
+        web: "facebook.com/sportschoolnr6",
+        webUrl: "https://facebook.com/sportschoolnr6"
+    },
+    {
+        name: "Școala sportivă nr. 8",
+        city: "Кишинёв",
+        director: "Marin Natalia",
+        phone: "+37322741417",
+        email: "ssnr8@mail.ru",
+        web: "facebook.com/profile",
+        webUrl: "https://facebook.com/profile.php?id=100091945631146"
+    },
+    {
+        name: "Специализированная Детско-юношеская школа Олимпийского резерва плавания г. Тирасполь",
+        city: "Тирасполь",
+        director: "Zaițeva Elena",
+        phone: "+37353398980",
+        email: "sdiushorplavaniia@mail.ru",
+        web: null,
+        webUrl: null
+    },
+    {
+        name: "Școala sportivă specializata pentru copii si juniori rezarve olimpice de probe pe apa mun. Balti",
+        city: "Бельцы",
+        director: "Gaivas Octavian",
+        phone: "+37323192831",
+        email: "delfinbalti@mail.ru",
+        web: "delfin.md",
+        webUrl: "https://delfin.md"
+    },
+    {
+        name: "ДЮСШ № 1, г. Рыбница",
+        city: "Рыбница",
+        director: "Niconenco Serghei",
+        phone: "+37355543276",
+        email: "ustimenko1966@mail.ru",
+        web: null,
+        webUrl: null
+    },
+    {
+        name: "Liceul Internat Municipal cu Profil Sportiv",
+        city: "Кишинёв",
+        director: "Postolachi Djulieta",
+        phone: "+37322581891",
+        email: "scortenski@mail.ru",
+        web: "facebook.com/limps.lic",
+        webUrl: "https://facebook.com/limps.lic"
+    },
+    {
+        name: "AquaTerra Sport School",
+        city: "Кишинёв",
+        director: "Corotaș Dmitrii",
+        phone: "+37322850550",
+        email: "d.corotas@aterra.md",
+        web: "sportschool.md",
+        webUrl: "https://sportschool.md/"
+    },
+    {
+        name: "Mol Team",
+        city: "Кишинёв",
+        director: "Luca Molina",
+        phone: "+37379868067",
+        email: "mol.team.md@gmail.com",
+        web: null,
+        webUrl: null
+    },
+    {
+        name: "Argo",
+        city: "Кишинёв",
+        director: "Karabetki Evgheni",
+        phone: "+37368556644",
+        email: "voytenko196@gmail.com",
+        web: "Facebook",
+        webUrl: "https://www.facebook.com/share/1D6Gaz1ExC/?mibextid=wwXIfr"
+    }
+];
+
+function formatPhone(phone) {
+    // +37322553077 -> +373 22 55 30 77
+    if (!phone || !phone.startsWith('+373')) return phone;
+    const num = phone.replace('+373', '');
+    return '+373 ' + num.replace(/(\d{2})(\d{3})(\d{3})/, '$1 $2 $3');
+}
+
+function renderSchools(filtered) {
+    const grid = document.getElementById('schoolsGrid');
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <div class="no-results-text">Ничего не найдено. Попробуйте изменить запрос.</div>
+            </div>
+        `;
+        return;
+    }
+    
+    grid.innerHTML = filtered.map(school => `
+        <article class="school-card">
+            <div class="school-header">
+                <div class="school-icon">🏊</div>
+                <div class="school-info">
+                    <h3 class="school-name">${school.name}</h3>
+                    <div class="school-city">📍 ${school.city}</div>
+                </div>
+            </div>
+            
+            <div class="school-director">
+                <div class="school-director-label">Директор</div>
+                <div class="school-director-name">${school.director}</div>
+            </div>
+            
+            <div class="school-contacts">
+                <a href="tel:${school.phone}" class="contact-link">
+                    <div class="contact-icon phone">📞</div>
+                    <div class="contact-text">${formatPhone(school.phone)}</div>
+                </a>
+                <a href="mailto:${school.email}" class="contact-link">
+                    <div class="contact-icon email">✉️</div>
+                    <div class="contact-text">${school.email}</div>
+                </a>
+                ${school.webUrl ? `
+                <a href="${school.webUrl}" target="_blank" rel="noopener" class="contact-link">
+                    <div class="contact-icon web">🌐</div>
+                    <div class="contact-text">${school.web}</div>
+                </a>
+                ` : ''}
+            </div>
+        </article>
+    `).join('');
+    
+    document.getElementById('totalCount').textContent = filtered.length;
+}
+
+let currentCity = 'all';
+let currentSearch = '';
+
+function applyFilters() {
+    let filtered = schools;
+    
+    if (currentCity !== 'all') {
+        filtered = filtered.filter(s => s.city === currentCity);
+    }
+    
+    if (currentSearch) {
+        const query = currentSearch.toLowerCase();
+        filtered = filtered.filter(s => 
+            s.name.toLowerCase().includes(query) ||
+            s.director.toLowerCase().includes(query) ||
+            s.city.toLowerCase().includes(query)
+        );
+    }
+    
+    renderSchools(filtered);
+}
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    applyFilters();
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCity = btn.dataset.city;
+        applyFilters();
+    });
+});
+
+// Initial render
+renderSchools(schools);
+</script>
+
+</body>
+</html>
