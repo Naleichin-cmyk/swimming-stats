@@ -7,35 +7,34 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   :root {
-    --navy: #0F4C75;
-    --blue: #3282B8;
-    --light-blue: #BBE1FA;
-    --teal: #00B4D8;
-    --cyan: #48CAE4;
-    --coral: #FF6B6B;
-    --orange: #FFA07A;
-    --gold: #FFD60A;
-    --green: #06D6A0;
-    --green-light: #95E1B5;
-    --purple: #7E57C2;
-    --pink: #FF6B9D;
+    --navy: #1A4E7E;
+    --blue: #2E7CB8;
+    --light-blue: #5BAEDC;
+    --teal: #4FB3D9;
+    --cyan: #7DCEEA;
+    --sky: #B8E0F2;
+    --soft-blue: #E3F2FB;
     
-    --bg: #F0F7FA;
-    --bg-soft: #E8F4F8;
+    --coral: #FF8A65;
+    --gold: #FFB300;
+    --green: #4CAF50;
+    --purple: #7E57C2;
+    
+    --bg: #F5F9FC;
+    --bg-soft: #E8F2F9;
     --card-bg: #FFFFFF;
     --text: #1A2332;
-    --text-soft: #5A6C7D;
-    --border: #D0E1EA;
+    --text-soft: #5A7589;
+    --border: #D5E3EE;
     
-    --shadow-sm: 0 2px 8px rgba(15, 76, 117, 0.06);
-    --shadow-md: 0 8px 24px rgba(15, 76, 117, 0.10);
-    --shadow-lg: 0 16px 40px rgba(15, 76, 117, 0.14);
-    --shadow-glow: 0 0 30px rgba(0, 180, 216, 0.3);
+    --shadow-sm: 0 2px 6px rgba(26, 78, 126, 0.06);
+    --shadow-md: 0 6px 18px rgba(26, 78, 126, 0.09);
+    --shadow-lg: 0 12px 32px rgba(26, 78, 126, 0.12);
     
-    --gradient-hero: linear-gradient(135deg, #0F4C75 0%, #3282B8 40%, #00B4D8 100%);
-    --gradient-accent: linear-gradient(135deg, #00B4D8 0%, #48CAE4 100%);
-    --gradient-warm: linear-gradient(135deg, #FF6B6B 0%, #FFA07A 100%);
-    --gradient-success: linear-gradient(135deg, #06D6A0 0%, #48CAE4 100%);
+    --gradient-hero: linear-gradient(135deg, #1A4E7E 0%, #2E7CB8 100%);
+    --gradient-accent: linear-gradient(135deg, #2E7CB8 0%, #5BAEDC 100%);
+    --gradient-warm: linear-gradient(135deg, #FF8A65 0%, #FFB300 100%);
+    --gradient-success: linear-gradient(135deg, #4CAF50 0%, #5BAEDC 100%);
 }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -797,18 +796,14 @@
     overflow: hidden;
   }
   .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(26,110,181,0.08), transparent);
-    transition: left 0.6s ease;
+    /* Disabled - was causing visual bug on numbers */
+    display: none;
   }
   .stat-card:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 12px 30px rgba(10,61,107,0.18);
   }
-  .stat-card:hover::before { left: 100%; }
+  /* shimmer disabled */
   
   .stat-num {
     background: linear-gradient(135deg, #1A6EB5 0%, #5BB8E8 100%);
@@ -1637,9 +1632,9 @@
       animation: statPulse 3s ease-in-out infinite;
     }
     .stats-grid > *:nth-child(1) .stat-num { animation-delay: 0s; }
-    .stats-grid > *:nth-child(2) .stat-num { animation-delay: 0.3s; }
-    .stats-grid > *:nth-child(3) .stat-num { animation-delay: 0.6s; }
-    .stats-grid > *:nth-child(4) .stat-num { animation-delay: 0.9s; }
+    
+    
+    
     
     /* Shine effect on hero */
     @keyframes shine {
@@ -2200,9 +2195,9 @@
   }
   
   /* Different gradient for each stat number */
-  .stats-grid > *:nth-child(2) .stat-num { background: linear-gradient(135deg, #06D6A0, #00B4D8); -webkit-background-clip: text; }
-  .stats-grid > *:nth-child(3) .stat-num { background: linear-gradient(135deg, #FF6B6B, #FFA07A); -webkit-background-clip: text; }
-  .stats-grid > *:nth-child(4) .stat-num { background: linear-gradient(135deg, #7E57C2, #FF6B9D); -webkit-background-clip: text; }
+  
+  
+  
   
   /* === TABS REDESIGN === */
   .tabs {
@@ -3031,16 +3026,28 @@
   }
 
 
-  /* === OCEAN PALETTE GRADIENTS FOR STATS === */
+  /* === SIMPLE BLUE STAT GRADIENTS === */
+  .stats-grid > *:nth-child(1) .stat-card::after,
+  .stats-grid > *:nth-child(2) .stat-card::after,
+  .stats-grid > *:nth-child(3) .stat-card::after,
+  .stats-grid > *:nth-child(4) .stat-card::after {
+    background: linear-gradient(90deg, #2E7CB8, #5BAEDC) !important;
+  }
+  
+  .stats-grid > *:nth-child(1) .stat-num,
+  .stats-grid > *:nth-child(2) .stat-num,
+  .stats-grid > *:nth-child(3) .stat-num,
+  
+  
   .stats-grid > *:nth-child(1) .stat-card::after { background: linear-gradient(90deg, #00B4D8, #48CAE4) !important; }
   .stats-grid > *:nth-child(2) .stat-card::after { background: linear-gradient(90deg, #06D6A0, #48CAE4) !important; }
   .stats-grid > *:nth-child(3) .stat-card::after { background: linear-gradient(90deg, #FF6B6B, #FFA07A) !important; }
   .stats-grid > *:nth-child(4) .stat-card::after { background: linear-gradient(90deg, #7E57C2, #FF6B9D) !important; }
   
   .stats-grid > *:nth-child(1) .stat-num { background: linear-gradient(135deg, #00B4D8, #48CAE4) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
-  .stats-grid > *:nth-child(2) .stat-num { background: linear-gradient(135deg, #06D6A0, #00B4D8) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
-  .stats-grid > *:nth-child(3) .stat-num { background: linear-gradient(135deg, #FF6B6B, #FFA07A) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
-  .stats-grid > *:nth-child(4) .stat-num { background: linear-gradient(135deg, #7E57C2, #FF6B9D) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important; }
+  
+  
+  
   
   /* ═══════════════════════════════════════════════════════════
      🌊 OCEAN PALETTE — Specific overrides
@@ -3264,6 +3271,405 @@
       margin-top: 2px !important;
       line-height: 1.3 !important;
     }
+  }
+
+
+  /* === SIMPLE HERO === */
+  .hero {
+    background: var(--gradient-hero) !important;
+  }
+  
+  .hero::before {
+    background: 
+      radial-gradient(ellipse at 30% 40%, rgba(123,206,234,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(184,224,242,0.2) 0%, transparent 50%) !important;
+  }
+  
+  .hero h1 {
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    color: white !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.15) !important;
+  }
+  
+  .hero-logo {
+    background: linear-gradient(135deg, #FFFFFF, #B8E0F2) !important;
+    box-shadow: 0 6px 24px rgba(26,78,126,0.3) !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════
+     📱 RECORDS TABLE - FIX OVERLAP BETWEEN TIME AND NAME
+     ═══════════════════════════════════════════════════════════ */
+  
+  @media (max-width: 700px) {
+    
+    /* Container - clear, no horizontal scroll needed */
+    .nr-table-wrap {
+      width: 100% !important;
+      overflow-x: hidden !important;
+      border-radius: 12px !important;
+      box-shadow: var(--shadow-sm) !important;
+      background: white !important;
+      margin: 12px 0 !important;
+    }
+    
+    /* Make table use fixed layout for predictable columns */
+    .nr-table {
+      width: 100% !important;
+      table-layout: fixed !important;
+      border-collapse: collapse !important;
+      font-size: 12px !important;
+    }
+    
+    /* Header */
+    .nr-table thead th {
+      background: linear-gradient(135deg, #1A4E7E, #2E7CB8) !important;
+      color: white !important;
+      padding: 10px 6px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      text-align: left !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    
+    /* === FIXED COLUMN WIDTHS === */
+    /* Total = 100%: 22% + 18% + 28% + 12% + 20% */
+    .nr-table th:nth-child(1), .nr-table td:nth-child(1) { width: 22% !important; }
+    .nr-table th:nth-child(2), .nr-table td:nth-child(2) { width: 18% !important; }
+    .nr-table th:nth-child(3), .nr-table td:nth-child(3) { width: 28% !important; }
+    .nr-table th:nth-child(4), .nr-table td:nth-child(4) { width: 12% !important; }
+    .nr-table th:nth-child(5), .nr-table td:nth-child(5) { width: 20% !important; }
+    
+    /* Cells - clear padding and overflow */
+    .nr-table td {
+      padding: 12px 6px !important;
+      border-bottom: 1px solid var(--border) !important;
+      vertical-align: top !important;
+      text-align: left !important;
+      overflow: hidden !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      hyphens: auto !important;
+    }
+    
+    /* Column 1: Distance - wrap if needed */
+    .nr-table td:nth-child(1) {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: var(--text-soft) !important;
+      line-height: 1.3 !important;
+      padding-right: 8px !important;
+    }
+    
+    /* Column 2: TIME - critical, must NOT touch next column */
+    .nr-table td:nth-child(2) {
+      padding-right: 10px !important;
+      border-right: 2px solid var(--bg-soft) !important;
+    }
+    .nr-table td:nth-child(2) .nr-time,
+    .nr-table td:nth-child(2) {
+      color: var(--navy) !important;
+      font-weight: 800 !important;
+      font-size: 13px !important;
+      white-space: nowrap !important;
+      letter-spacing: -0.3px !important;
+    }
+    
+    /* Column 3: Athlete - clear left padding to not touch time */
+    .nr-table td:nth-child(3) {
+      padding-left: 10px !important;
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+    }
+    
+    /* Athlete name - bold, on its own line */
+    .nr-table td:nth-child(3) > div:first-child,
+    .nr-athlete, .nr-name {
+      display: block !important;
+      font-weight: 700 !important;
+      color: var(--navy) !important;
+      font-size: 12px !important;
+      line-height: 1.3 !important;
+      margin-bottom: 3px !important;
+      word-break: normal !important;
+      overflow-wrap: break-word !important;
+    }
+    
+    /* Athlete meta (club · year) */
+    .nr-table td:nth-child(3) .nr-meta {
+      display: block !important;
+      font-size: 10px !important;
+      color: var(--text-soft) !important;
+      line-height: 1.3 !important;
+      word-break: normal !important;
+    }
+    
+    /* Column 4: Year */
+    .nr-table td:nth-child(4) {
+      font-size: 11px !important;
+      color: var(--text-soft) !important;
+      text-align: center !important;
+    }
+    
+    /* Column 5: Competition */
+    .nr-table td:nth-child(5) {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+      padding-left: 6px !important;
+    }
+    
+    .nr-table td:nth-child(5) .nr-meta {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+    }
+    
+    /* Intl badge inside competition column */
+    .nr-intl, .badge-intl {
+      display: inline-block !important;
+      font-size: 9px !important;
+      padding: 2px 5px !important;
+      border-radius: 6px !important;
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      margin-top: 3px !important;
+      white-space: nowrap !important;
+    }
+    
+    /* Remove old scroll hint - no longer needed */
+    .nr-table-wrap::before {
+      display: none !important;
+    }
+    .nr-table-wrap.scrollable::before {
+      display: none !important;
+    }
+  }
+  
+  /* Very small screens (≤370px) - even tighter */
+  @media (max-width: 370px) {
+    .nr-table {
+      font-size: 11px !important;
+    }
+    .nr-table td {
+      padding: 10px 4px !important;
+    }
+    /* Adjust widths for very narrow */
+    .nr-table th:nth-child(1), .nr-table td:nth-child(1) { width: 20% !important; }
+    .nr-table th:nth-child(2), .nr-table td:nth-child(2) { width: 20% !important; }
+    .nr-table th:nth-child(3), .nr-table td:nth-child(3) { width: 30% !important; }
+    .nr-table th:nth-child(4), .nr-table td:nth-child(4) { width: 12% !important; }
+    .nr-table th:nth-child(5), .nr-table td:nth-child(5) { width: 18% !important; }
+    
+    .nr-table td:nth-child(2) {
+      font-size: 12px !important;
+    }
+    .nr-table td:nth-child(3) > div:first-child {
+      font-size: 11px !important;
+    }
+  }
+
+
+  /* === SIMPLE BLUE OVERRIDES === */
+  body {
+    background: var(--bg) !important;
+    background-image: none !important;
+  }
+  
+  .tab.active {
+    background: var(--gradient-accent) !important;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(46,124,184,0.3) !important;
+  }
+  
+  .ath-profile-btn,
+  .ath-avatar {
+    background: var(--gradient-accent) !important;
+    box-shadow: 0 3px 10px rgba(46,124,184,0.25) !important;
+  }
+  
+  .ath-card::before,
+  .club-card::after,
+  .comp-num {
+    background: var(--gradient-accent) !important;
+  }
+  
+  .pool-btn.active, .gender-btn.active, .cat-btn.active {
+    background: var(--gradient-accent) !important;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(46,124,184,0.3) !important;
+  }
+  
+  .pool-btn:hover, .gender-btn:hover, .cat-btn:hover {
+    border-color: var(--blue) !important;
+    background: rgba(46,124,184,0.05) !important;
+  }
+  
+  .search-box:focus {
+    border-color: var(--blue) !important;
+    box-shadow: 0 0 0 3px rgba(46,124,184,0.12) !important;
+  }
+  
+  .record-rank.gold {
+    background: linear-gradient(135deg, #FFB300, #FF8A65) !important;
+    color: white !important;
+  }
+  .record-rank.silver {
+    background: linear-gradient(135deg, #C0C5CE, #97A4B0) !important;
+    color: white !important;
+  }
+  .record-rank.bronze {
+    background: linear-gradient(135deg, #CD7F32, #B0683A) !important;
+    color: white !important;
+  }
+  
+  .comp-pool-tag.p25 {
+    background: linear-gradient(135deg, #4CAF50, #5BAEDC) !important;
+    color: white !important;
+  }
+  .comp-pool-tag.p50 {
+    background: linear-gradient(135deg, #2E7CB8, #5BAEDC) !important;
+    color: white !important;
+  }
+  
+  .profile-header {
+    background: var(--gradient-hero) !important;
+  }
+  .profile-header::before {
+    background: 
+      radial-gradient(circle at 30% 50%, rgba(123,206,234,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 70% 50%, rgba(184,224,242,0.2) 0%, transparent 50%) !important;
+  }
+  
+  .ps-num {
+    background: linear-gradient(135deg, #1A4E7E, #2E7CB8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  .ach-badge {
+    background: var(--gradient-accent) !important;
+    box-shadow: 0 3px 10px rgba(46,124,184,0.25) !important;
+  }
+  
+  .live-indicator {
+    background: rgba(76,175,80,0.2) !important;
+    border: 1px solid rgba(76,175,80,0.4) !important;
+  }
+  .live-indicator::before {
+    background: #4CAF50 !important;
+    box-shadow: 0 0 10px #4CAF50 !important;
+  }
+  
+  .lang-btn.active {
+    background: var(--gradient-accent) !important;
+    color: white !important;
+    box-shadow: 0 3px 10px rgba(46,124,184,0.3) !important;
+  }
+  
+  /* Remove flashy text-glow on hero h1 - too much for eyes */
+  .hero h1 {
+    animation: none !important;
+  }
+  
+  /* Reduce breathing intensity on cards (was too much) */
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════
+     🔧 STAT NUMBERS - FIX VISIBILITY
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Reset: stat numbers must be SOLID color, NOT transparent gradient */
+  .stat-num,
+  .stats-grid > *:nth-child(1) .stat-num,
+  .stats-grid > *:nth-child(2) .stat-num,
+  .stats-grid > *:nth-child(3) .stat-num,
+  .stats-grid > *:nth-child(4) .stat-num {
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    color: var(--navy) !important;
+    font-weight: 900 !important;
+    font-size: 36px !important;
+    letter-spacing: -1px !important;
+  }
+  
+  /* Make sure stat-card has clean white background, no blue polosa across middle */
+  .stat-card {
+    background: white !important;
+    background-image: none !important;
+  }
+  
+  /* If there's a ::before with gradient, kill it */
+  .stat-card::before {
+    display: none !important;
+  }
+  
+  /* Keep the top-edge gradient line (the 4px colored line at top) */
+  .stat-card::after {
+    height: 4px !important;
+    background: linear-gradient(90deg, #2E7CB8, #5BAEDC) !important;
+  }
+
+
+  /* ═══════════════════════════════════════════════════════════
+     ⚠️ FORCE STAT NUMBERS VISIBLE
+     ═══════════════════════════════════════════════════════════ */
+  
+  .stat-num,
+  .stats-grid .stat-num,
+  .stats-grid > * .stat-num,
+  .stats-grid > *:nth-child(1) .stat-num,
+  .stats-grid > *:nth-child(2) .stat-num,
+  .stats-grid > *:nth-child(3) .stat-num,
+  .stats-grid > *:nth-child(4) .stat-num {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: border-box !important;
+    -webkit-text-fill-color: #1A4E7E !important;
+    background-clip: border-box !important;
+    color: #1A4E7E !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+    z-index: 10 !important;
+    position: relative !important;
+  }
+  
+  /* Disable all stat-card pseudo-elements that might create polosa */
+  .stat-card::before {
+    display: none !important;
+    content: none !important;
+  }
+  
+  /* Keep only the top 4px line */
+  .stat-card::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    height: 4px !important;
+    width: 100% !important;
+    background: linear-gradient(90deg, #2E7CB8, #5BAEDC) !important;
+    transform: none !important;
+  }
+  
+  .stat-card {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    position: relative !important;
+    overflow: visible !important;
   }
 
 </style>
