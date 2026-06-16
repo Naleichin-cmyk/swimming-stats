@@ -3917,6 +3917,190 @@
     .pool-btn, .gender-btn, .cat-btn { font-size: 11px !important; padding: 9px 4px !important; }
   }
 
+
+  /* ═══════════════════════════════════════════════════════════
+     ⚡ PERFORMANCE OPTIMIZATIONS
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Disable infinite/continuous animations that cause lag */
+  
+  /* No more breathing on every stat-num */
+  .stat-num {
+    animation: none !important;
+  }
+  
+  /* No more ripple/breathe on every profile button */
+  .ath-profile-btn {
+    animation: none !important;
+  }
+  
+  /* No text-glow on hero (was 4s infinite) */
+  .hero h1 {
+    animation: none !important;
+  }
+  
+  /* No infinite breathe on club cards */
+  .club-card {
+    animation: slideInBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards !important;
+  }
+  
+  /* Stat cards: just initial entrance, no continuous */
+  .stat-card {
+    animation: slideInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards !important;
+  }
+  
+  /* Athlete cards - faster entrance, no continuous animations */
+  .ath-card {
+    animation: slideInBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards !important;
+  }
+  
+  /* Logo - simpler */
+  .hero-logo {
+    animation: float 4s ease-in-out infinite !important;
+  }
+  
+  /* Gold rank - simpler */
+  .record-rank.gold {
+    animation: none !important;
+  }
+  
+  /* Stagger - only first 8 cards animate, rest appear instantly */
+  .ath-list .ath-card:nth-child(1)  { animation-delay: 0.05s !important; }
+  .ath-list .ath-card:nth-child(2)  { animation-delay: 0.08s !important; }
+  .ath-list .ath-card:nth-child(3)  { animation-delay: 0.11s !important; }
+  .ath-list .ath-card:nth-child(4)  { animation-delay: 0.14s !important; }
+  .ath-list .ath-card:nth-child(5)  { animation-delay: 0.17s !important; }
+  .ath-list .ath-card:nth-child(6)  { animation-delay: 0.20s !important; }
+  .ath-list .ath-card:nth-child(7)  { animation-delay: 0.23s !important; }
+  .ath-list .ath-card:nth-child(8)  { animation-delay: 0.26s !important; }
+  .ath-list .ath-card:nth-child(n+9) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* ═══════════════════════════════════════════════════════════
+     📱 MOBILE PERFORMANCE - More aggressive
+     ═══════════════════════════════════════════════════════════ */
+  
+  @media (max-width: 700px) {
+    
+    /* No mobile hero gradient animation */
+    .hero {
+      animation: none !important;
+      background-size: 100% 100% !important;
+    }
+    
+    /* No mesh float animation */
+    .hero::before {
+      animation: none !important;
+    }
+    
+    /* No flying sparkles - they slowed everything down */
+    .hero-content::before,
+    .hero-content::after,
+    .stats-grid::before,
+    .stats-grid::after {
+      display: none !important;
+      animation: none !important;
+    }
+    
+    /* No shine on hero */
+    .hero .shine,
+    .hero::after {
+      animation: none !important;
+      display: none !important;
+    }
+    
+    /* No mobilePulse on stat-num */
+    .stat-num {
+      animation: none !important;
+    }
+    
+    /* No infinite tab animations */
+    .tab.active {
+      animation: none !important;
+    }
+    
+    /* No ripple on profile button */
+    .ath-profile-btn {
+      animation: none !important;
+    }
+    
+    /* Live indicator - simpler */
+    .live-indicator {
+      animation: none !important;
+    }
+    .live-indicator::before {
+      animation: liveDot 2s ease-in-out infinite !important;
+    }
+    @keyframes liveDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    
+    /* No gold rank animation */
+    .record-rank.gold {
+      animation: none !important;
+    }
+    
+    /* Cards - simple entrance, no continuous */
+    .stat-card, .ath-card, .club-card, .comp-card {
+      animation: simpleEntrance 0.3s ease-out backwards !important;
+    }
+    
+    @keyframes simpleEntrance {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Stagger only first 6 cards on mobile */
+    .ath-list .ath-card:nth-child(1) { animation-delay: 0.02s !important; }
+    .ath-list .ath-card:nth-child(2) { animation-delay: 0.05s !important; }
+    .ath-list .ath-card:nth-child(3) { animation-delay: 0.08s !important; }
+    .ath-list .ath-card:nth-child(4) { animation-delay: 0.11s !important; }
+    .ath-list .ath-card:nth-child(5) { animation-delay: 0.14s !important; }
+    .ath-list .ath-card:nth-child(6) { animation-delay: 0.17s !important; }
+    .ath-list .ath-card:nth-child(n+7) {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    /* Reduce bubble count via opacity */
+    .bubble:nth-child(n+10) {
+      display: none !important;
+    }
+    
+    /* Disable will-change on everything (it eats memory) */
+    * {
+      will-change: auto !important;
+    }
+    
+    /* Disable expensive shadow animations */
+    .ath-profile-btn:hover,
+    .ath-card:hover,
+    .club-card:hover {
+      transform: none !important;
+    }
+    
+    /* Faster panel animation */
+    .panel {
+      animation: simpleEntrance 0.2s ease-out !important;
+    }
+  }
+  
+  /* ═══════════════════════════════════════════════════════════
+     🎬 RESPECT USER PREFERENCE: prefers-reduced-motion
+     ═══════════════════════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
 </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
 
@@ -3993,17 +4177,24 @@ function checkScrollableTables() {
   });
 }
 
-// Re-check after every render
-const observer = new MutationObserver(() => {
-  setTimeout(checkScrollableTables, 50);
-});
+// Re-check after render - throttled
+let scrollCheckTimer = null;
+function debouncedCheck() {
+  if (scrollCheckTimer) return;
+  scrollCheckTimer = setTimeout(() => {
+    checkScrollableTables();
+    scrollCheckTimer = null;
+  }, 300);
+}
 setTimeout(() => {
-  const panels = document.querySelectorAll('.panel');
-  panels.forEach(p => observer.observe(p, { childList: true, subtree: true }));
-}, 500);
+  document.querySelectorAll('.panel').forEach(p => {
+    const o = new MutationObserver(debouncedCheck);
+    o.observe(p, { childList: true });
+  });
+}, 1000);
 window.addEventListener('resize', checkScrollableTables);
 setTimeout(checkScrollableTables, 200);
-setInterval(checkScrollableTables, 2000);
+
 
 </script>
 </head>
@@ -4307,16 +4498,16 @@ function createBubbles() {
   const container = document.getElementById('bubbles');
   if (!container) return;
   const isMobileNow = window.matchMedia('(max-width: 700px)').matches;
-  const count = isMobileNow ? 18 : 20;
+  const count = isMobileNow ? 6 : 10;  // Much fewer for performance
   for (let i = 0; i < count; i++) {
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
-    const size = 6 + Math.random() * 28;
+    const size = 8 + Math.random() * 20;
     bubble.style.width = size + 'px';
     bubble.style.height = size + 'px';
     bubble.style.left = Math.random() * 100 + '%';
-    bubble.style.animationDuration = (10 + Math.random() * 10) + 's';
-    bubble.style.animationDelay = (Math.random() * 8) + 's';
+    bubble.style.animationDuration = (12 + Math.random() * 8) + 's';
+    bubble.style.animationDelay = (Math.random() * 6) + 's';
     container.appendChild(bubble);
   }
 }
