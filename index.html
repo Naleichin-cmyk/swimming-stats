@@ -4708,6 +4708,792 @@
     .ratings-header-sub { font-size: 11px; }
   }
 
+
+  /* ═══════════════════════════════════════════════════════════
+     📱 COMPLETE MOBILE REDESIGN — CARDS OVER TABLES
+     ═══════════════════════════════════════════════════════════ */
+  
+  @media (max-width: 700px) {
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       COMMON: Panel + typography
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .panel {
+      padding: 14px 12px !important;
+      border-radius: 16px !important;
+      margin-bottom: 12px !important;
+    }
+    
+    .panel-title {
+      font-size: 17px !important;
+      font-weight: 800 !important;
+      line-height: 1.3 !important;
+      margin-bottom: 10px !important;
+    }
+    
+    /* Note box - clear info */
+    .note-box, [data-i18n^="note_"] {
+      font-size: 12px !important;
+      line-height: 1.5 !important;
+      padding: 10px 12px !important;
+      border-radius: 10px !important;
+      margin-bottom: 14px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CATEGORY / POOL / GENDER SWITCHERS — clear stacking
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .pool-switch, .gender-switch, .cat-switch,
+    .analytics-tabs {
+      display: flex !important;
+      width: 100% !important;
+      gap: 6px !important;
+      margin-bottom: 10px !important;
+      background: white !important;
+      padding: 4px !important;
+      border-radius: 12px !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+    
+    .pool-btn, .gender-btn, .cat-btn,
+    .analytics-tabs button {
+      flex: 1 1 0 !important;
+      min-width: 0 !important;
+      padding: 10px 4px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      border-radius: 9px !important;
+      border: none !important;
+      background: transparent !important;
+      color: var(--text-soft) !important;
+    }
+    
+    .pool-btn.active, .gender-btn.active, .cat-btn.active,
+    .analytics-tabs button.active {
+      background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+      color: white !important;
+      box-shadow: 0 3px 10px rgba(46,124,184,0.3) !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🇲🇩 NATIONAL RECORDS — Card format on mobile
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    /* Hide the full table on mobile, show card-style version */
+    .nr-table-wrap {
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    /* Hide the actual table thead on mobile */
+    .nr-table thead {
+      display: none !important;
+    }
+    
+    .nr-table, .nr-table tbody {
+      display: block !important;
+      width: 100% !important;
+    }
+    
+    .nr-table tr {
+      display: block !important;
+      background: white !important;
+      border-radius: 14px !important;
+      padding: 12px 14px !important;
+      margin-bottom: 10px !important;
+      box-shadow: var(--shadow-sm) !important;
+      border: 1px solid var(--border) !important;
+      position: relative !important;
+    }
+    
+    .nr-table td {
+      display: block !important;
+      padding: 0 !important;
+      border: none !important;
+      background: transparent !important;
+    }
+    
+    /* Column 1 (event/distance) - top left */
+    .nr-table td:nth-child(1) {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: var(--blue) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      margin-bottom: 4px !important;
+    }
+    
+    /* Column 2 (time) - big and bold */
+    .nr-table td:nth-child(2) {
+      font-size: 22px !important;
+      font-weight: 900 !important;
+      color: var(--navy) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 8px !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+    
+    /* Column 3 (athlete) - name + club */
+    .nr-table td:nth-child(3) {
+      margin-bottom: 8px !important;
+      padding-top: 6px !important;
+      border-top: 1px dashed var(--border) !important;
+    }
+    
+    .nr-table td:nth-child(3) > div:first-child,
+    .nr-athlete, .nr-name {
+      font-weight: 700 !important;
+      color: var(--navy) !important;
+      font-size: 15px !important;
+      margin-bottom: 2px !important;
+    }
+    
+    .nr-table td:nth-child(3) .nr-meta {
+      font-size: 11px !important;
+      color: var(--text-soft) !important;
+    }
+    
+    /* Column 4 (year) - inline with competition */
+    .nr-table td:nth-child(4) {
+      display: inline-block !important;
+      font-size: 11px !important;
+      color: var(--text-soft) !important;
+      padding: 3px 8px !important;
+      background: var(--bg-soft) !important;
+      border-radius: 6px !important;
+      margin-right: 6px !important;
+      margin-bottom: 4px !important;
+      font-weight: 700 !important;
+    }
+    
+    /* Column 5 (competition) */
+    .nr-table td:nth-child(5) {
+      font-size: 11px !important;
+      color: var(--text-soft) !important;
+      line-height: 1.4 !important;
+    }
+    
+    /* Intl badge */
+    .nr-intl, .badge-intl {
+      display: inline-block !important;
+      font-size: 10px !important;
+      padding: 3px 8px !important;
+      border-radius: 8px !important;
+      background: linear-gradient(135deg, #FFB300, #FF8A65) !important;
+      color: white !important;
+      font-weight: 700 !important;
+      margin-top: 4px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📈 RATINGS — Card format
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .ratings-table-wrap {
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+    }
+    
+    .ratings-table thead {
+      display: none !important;
+    }
+    
+    .ratings-table, .ratings-table tbody {
+      display: block !important;
+      width: 100% !important;
+    }
+    
+    .ratings-table tr {
+      display: grid !important;
+      grid-template-columns: 45px 1fr auto !important;
+      grid-template-areas: 
+        "place athlete points"
+        "place event points"
+        "place time points" !important;
+      gap: 4px 12px !important;
+      background: white !important;
+      border-radius: 14px !important;
+      padding: 12px 14px !important;
+      margin-bottom: 10px !important;
+      box-shadow: var(--shadow-sm) !important;
+      border: 1px solid var(--border) !important;
+      align-items: center !important;
+    }
+    
+    .ratings-table td {
+      display: block !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+    
+    /* Place */
+    .ratings-table td.rating-place,
+    .ratings-table td:nth-child(1) {
+      grid-area: place !important;
+      width: 45px !important;
+      align-self: center !important;
+    }
+    
+    .rating-medal {
+      width: 38px !important;
+      height: 38px !important;
+      line-height: 38px !important;
+      font-size: 15px !important;
+    }
+    
+    /* Athlete */
+    .ratings-table td:nth-child(2) {
+      grid-area: athlete !important;
+    }
+    
+    .rating-athlete {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      line-height: 1.2 !important;
+    }
+    
+    .rating-athlete-year {
+      font-size: 11px !important;
+      margin-top: 2px !important;
+    }
+    
+    /* Event + time on same row */
+    .ratings-table td:nth-child(3) {
+      grid-area: event !important;
+      font-size: 12px !important;
+      color: var(--text-soft) !important;
+    }
+    
+    .ratings-table td:nth-child(4) {
+      grid-area: time !important;
+    }
+    
+    .rating-time {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      color: var(--navy) !important;
+    }
+    
+    /* Points - always on right */
+    .ratings-table td:last-child {
+      grid-area: points !important;
+      align-self: center !important;
+    }
+    
+    .rating-points {
+      font-size: 14px !important;
+      padding: 6px 12px !important;
+      border-radius: 20px !important;
+      font-weight: 800 !important;
+    }
+    
+    /* Hide competition & club on mobile (shown in modal on tap) */
+    .ratings-table td.hide-mobile {
+      display: none !important;
+    }
+    
+    /* Ratings header info card */
+    .ratings-header {
+      padding: 12px !important;
+      gap: 10px !important;
+      border-radius: 12px !important;
+      margin-bottom: 12px !important;
+    }
+    
+    .ratings-header-icon {
+      font-size: 26px !important;
+    }
+    
+    .ratings-header-title {
+      font-size: 15px !important;
+    }
+    
+    .ratings-header-sub {
+      font-size: 11px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📊 ANALYTICS — Card format for tables
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    table.tab-table {
+      display: block !important;
+      background: transparent !important;
+      overflow: visible !important;
+      white-space: normal !important;
+    }
+    
+    table.tab-table thead {
+      display: none !important;
+    }
+    
+    table.tab-table tbody {
+      display: block !important;
+      width: 100% !important;
+    }
+    
+    table.tab-table tr {
+      display: block !important;
+      background: white !important;
+      border-radius: 14px !important;
+      padding: 12px 14px !important;
+      margin-bottom: 10px !important;
+      box-shadow: var(--shadow-sm) !important;
+      border: 1px solid var(--border) !important;
+    }
+    
+    table.tab-table td {
+      display: block !important;
+      padding: 3px 0 !important;
+      border: none !important;
+      font-size: 13px !important;
+      white-space: normal !important;
+      line-height: 1.4 !important;
+    }
+    
+    /* First column (usually rank) - large */
+    table.tab-table td:nth-child(1) {
+      font-size: 18px !important;
+      font-weight: 900 !important;
+      color: var(--blue) !important;
+      display: inline-block !important;
+      margin-right: 10px !important;
+    }
+    
+    /* Second column (athlete name) - large, bold, inline with rank */
+    table.tab-table td:nth-child(2) {
+      display: inline-block !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+    }
+    
+    /* Other columns - key: value format */
+    table.tab-table td:nth-child(n+3) {
+      color: var(--text-soft) !important;
+      font-size: 12px !important;
+    }
+    
+    /* Progress % - highlighted */
+    table.tab-table td:nth-child(4) {
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      color: var(--green) !important;
+      background: rgba(76,175,80,0.08) !important;
+      padding: 6px 10px !important;
+      border-radius: 8px !important;
+      display: inline-block !important;
+      margin: 6px 0 !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       👤 ATHLETE CARDS — More info visible
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .ath-card {
+      padding: 14px 12px !important;
+      gap: 12px !important;
+      border-radius: 14px !important;
+    }
+    
+    .ath-avatar {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+    }
+    
+    .ath-name {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      line-height: 1.2 !important;
+    }
+    
+    .ath-meta {
+      font-size: 12px !important;
+      margin-top: 3px !important;
+      line-height: 1.4 !important;
+    }
+    
+    .ath-profile-btn {
+      font-size: 12px !important;
+      padding: 8px 12px !important;
+      font-weight: 700 !important;
+      border-radius: 10px !important;
+    }
+    
+    /* Stats numbers on card */
+    .ath-stat-num {
+      font-size: 18px !important;
+      font-weight: 800 !important;
+    }
+    
+    .ath-stat-lab {
+      font-size: 10px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🏆 TOP RECORDS (record cards)
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .records-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+    
+    .record-card {
+      padding: 12px 14px !important;
+      border-radius: 14px !important;
+      gap: 10px !important;
+    }
+    
+    .record-rank {
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 14px !important;
+      font-weight: 800 !important;
+    }
+    
+    .record-name {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 1.3 !important;
+    }
+    
+    .record-meta {
+      font-size: 11px !important;
+    }
+    
+    .record-time {
+      font-size: 17px !important;
+      font-weight: 800 !important;
+      color: var(--navy) !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🏊 CLUBS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .clubs-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+    
+    .club-card {
+      padding: 14px 12px !important;
+      border-radius: 14px !important;
+    }
+    
+    .club-name {
+      font-size: 17px !important;
+      font-weight: 800 !important;
+      margin-bottom: 8px !important;
+    }
+    
+    .club-stats {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      font-size: 12px !important;
+    }
+    
+    .club-stats > * {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      background: var(--bg-soft) !important;
+      padding: 4px 10px !important;
+      border-radius: 8px !important;
+      color: var(--text-soft) !important;
+      font-weight: 600 !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📅 COMPETITIONS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .comp-card {
+      padding: 14px 12px !important;
+      gap: 12px !important;
+      border-radius: 14px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    
+    .comp-num {
+      width: 38px !important;
+      height: 38px !important;
+      font-size: 14px !important;
+      flex-shrink: 0 !important;
+    }
+    
+    .comp-info {
+      flex: 1 !important;
+      min-width: 0 !important;
+    }
+    
+    .comp-name {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 1.3 !important;
+      color: var(--navy) !important;
+      word-break: break-word !important;
+    }
+    
+    .comp-meta {
+      font-size: 11px !important;
+      margin-top: 3px !important;
+      color: var(--text-soft) !important;
+    }
+    
+    .comp-numbers {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+      gap: 2px !important;
+      font-size: 11px !important;
+      color: var(--text-soft) !important;
+    }
+    
+    .comp-numbers b {
+      font-size: 15px !important;
+      color: var(--navy) !important;
+      font-weight: 800 !important;
+      line-height: 1 !important;
+    }
+    
+    .comp-arrow {
+      display: none !important;
+    }
+    
+    /* Competition results modal - already good, minor tweaks */
+    .comp-event-name {
+      font-size: 14px !important;
+      font-weight: 800 !important;
+    }
+    
+    .comp-results-table td {
+      padding: 10px 8px !important;
+    }
+    
+    .comp-athlete-name {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+    }
+    
+    .comp-athlete-club {
+      font-size: 11px !important;
+    }
+    
+    .comp-time {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       👤 PROFILE MODAL - Enhanced
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .profile-name {
+      font-size: 18px !important;
+      font-weight: 800 !important;
+    }
+    
+    .profile-meta {
+      font-size: 12px !important;
+    }
+    
+    .ps-num {
+      font-size: 24px !important;
+      font-weight: 900 !important;
+    }
+    
+    .ps-lab {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+    }
+    
+    .ps-title {
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      margin: 20px 0 12px !important;
+      color: var(--navy) !important;
+    }
+    
+    /* Distance cards in profile */
+    .dist-card {
+      padding: 14px !important;
+      border-radius: 12px !important;
+    }
+    
+    .dist-event {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      color: var(--text-soft) !important;
+      text-transform: uppercase !important;
+    }
+    
+    .dist-time, .dist-best-time {
+      font-size: 20px !important;
+      font-weight: 900 !important;
+      color: var(--navy) !important;
+      margin: 4px 0 !important;
+    }
+    
+    .dist-delta {
+      font-size: 12px !important;
+      font-weight: 700 !important;
+    }
+    
+    /* Achievement badges */
+    .ach-badge {
+      font-size: 11px !important;
+      padding: 6px 12px !important;
+      font-weight: 700 !important;
+      border-radius: 20px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🎨 STATS ON TOP (hero) 
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      padding: 12px !important;
+    }
+    
+    .stat-card {
+      padding: 14px 8px !important;
+      border-radius: 12px !important;
+    }
+    
+    .stat-num {
+      font-size: 28px !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+    }
+    
+    .stat-label {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      margin-top: 4px !important;
+    }
+    
+    /* Sub-stats */
+    .stat-card > div:last-child {
+      font-size: 9px !important;
+      margin-top: 4px !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🔍 SEARCH BOXES + FILTERS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .filters {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      margin-bottom: 12px !important;
+    }
+    
+    .search-box, .filter-select {
+      width: 100% !important;
+      font-size: 15px !important;
+      padding: 12px 14px !important;
+      border-radius: 12px !important;
+      border: 2px solid var(--border) !important;
+      background: white !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📱 TABS — sticky bottom bar option OR top scroll
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .tabs {
+      display: flex !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 6px !important;
+      gap: 4px !important;
+      background: white !important;
+      border-radius: 14px !important;
+      box-shadow: var(--shadow-sm) !important;
+      scroll-snap-type: x mandatory !important;
+      scrollbar-width: none !important;
+    }
+    
+    .tabs::-webkit-scrollbar {
+      display: none !important;
+    }
+    
+    .tab {
+      flex: 0 0 auto !important;
+      scroll-snap-align: start !important;
+      font-size: 12px !important;
+      padding: 9px 12px !important;
+      border-radius: 10px !important;
+      white-space: nowrap !important;
+      font-weight: 700 !important;
+      border: none !important;
+      background: transparent !important;
+      color: var(--text-soft) !important;
+    }
+    
+    .tab.active {
+      background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+      color: white !important;
+      box-shadow: 0 3px 10px rgba(46,124,184,0.3) !important;
+    }
+    
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       🌐 LANG SWITCHER
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    
+    .lang-switcher {
+      top: 12px !important;
+      right: 12px !important;
+      padding: 3px !important;
+    }
+    
+    .lang-btn {
+      padding: 7px 11px !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      min-width: 38px !important;
+    }
+  }
+  
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     Very small screens
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  @media (max-width: 380px) {
+    .panel { padding: 12px 10px !important; }
+    .panel-title { font-size: 15px !important; }
+    .stat-num { font-size: 24px !important; }
+    .stat-label { font-size: 10px !important; }
+    .tab { font-size: 11px !important; padding: 8px 10px !important; }
+    .pool-btn, .gender-btn, .cat-btn { font-size: 11px !important; padding: 9px 3px !important; }
+    
+    /* Records cards even more compact */
+    .nr-table td:nth-child(2) { font-size: 20px !important; }
+    .nr-table td:nth-child(3) > div:first-child { font-size: 14px !important; }
+    
+    /* Ratings */
+    .rating-athlete { font-size: 14px !important; }
+    .rating-time { font-size: 14px !important; }
+    .rating-medal { width: 34px !important; height: 34px !important; line-height: 34px !important; font-size: 13px !important; }
+  }
+
 </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
 
