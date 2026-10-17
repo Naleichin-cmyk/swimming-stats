@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WADA · Антидопинг · FISN</title>
+<meta name="description" content="Антидопинговые материалы Федерации плавания Молдовы для спортсменов и тренеров">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2a4a;--blue:#1565c0;--teal:#0f9b9b;--gold:#f2b705;--bg:#f2f6fb;--card:#fff;--text:#1b2a3d;--muted:#5b6b80;--line:#dbe4ef}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--blue)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+header{background:var(--navy);color:#fff;border-bottom:5px solid var(--gold)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0}
+.back{color:#c9d8ea;text-decoration:none;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.back:hover{color:#fff}
+.lang{display:flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:#c9d8ea;font:700 13px Manrope,sans-serif;padding:7px 14px;border-radius:999px;cursor:pointer}
+.lang button.on{background:#fff;color:var(--navy)}
+.hero{padding:22px 0 34px}
+.kicker{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.12;margin:8px 0 10px;font-weight:800}
+.hero p{margin:0;color:#c9d8ea;max-width:640px;font-size:16px}
+
+main.wrap{padding-top:36px;padding-bottom:48px}
+h2{font-size:20px;font-weight:800;color:var(--navy);margin:30px 0 14px;padding-left:12px;border-left:5px solid var(--teal)}
+h2:first-child{margin-top:0}
+
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.doc{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(11,42,74,.06),0 6px 20px rgba(11,42,74,.06);display:flex;flex-direction:column;border-top:4px solid var(--blue)}
+.doc.alt{border-top-color:var(--teal)}
+.dochead{display:flex;gap:14px;align-items:flex-start}
+.ico{flex:none;width:48px;height:58px;border-radius:8px;background:#fdecec;color:#c62828;display:flex;align-items:flex-end;justify-content:center;font-weight:800;font-size:11px;padding-bottom:8px;position:relative}
+.ico:before{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 14px 14px 0;border-color:transparent var(--card) #f4c7c7 transparent}
+.doc h3{margin:2px 0 6px;font-size:18px;line-height:1.25;color:var(--navy)}
+.doc p{margin:0;color:var(--muted);font-size:14.5px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 16px}
+.tag{font-size:12px;font-weight:700;background:var(--bg);color:var(--muted);padding:4px 10px;border-radius:999px}
+.btns{display:flex;gap:10px;margin-top:auto}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .1s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:hover{background:#0f4f99}
+.btn.ghost{background:var(--bg);color:var(--navy);border:1px solid var(--line)}
+.btn.ghost:hover{background:#e5edf7}
+.btn svg{width:18px;height:18px}
+.other{margin-top:12px;font-size:13px;color:var(--muted)}
+.other a{font-weight:700;text-decoration:none}
+
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.link{background:var(--card);border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--text);border:1px solid var(--line);display:block;transition:border-color .15s,box-shadow .15s}
+.link:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(21,101,192,.12)}
+.link b{display:block;color:var(--navy);font-size:15px}
+.link>span{font-size:13.5px;color:var(--muted)}
+.link i{font-style:normal;color:var(--blue);font-size:12px;font-weight:700}
+
+.contacts{background:var(--navy);color:#e6eef8;border-radius:16px;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.contacts h4{margin:0 0 6px;color:var(--gold);font-size:14px;letter-spacing:.04em}
+.contacts a{color:#8cc4ff;font-weight:600;text-decoration:none;word-break:break-word}
+.contacts p{margin:0;font-size:14.5px}
+.note{margin-top:14px;font-size:13.5px;color:var(--muted);background:#fff6dc;border-left:4px solid var(--gold);padding:12px 14px;border-radius:10px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:0 0 30px}
+
+[data-l]{display:none}
+html[lang=ru] [data-l=ru],html[lang=ro] [data-l=ro]{display:revert}
+html[lang=ru] .btns[data-l=ru],html[lang=ro] .btns[data-l=ro]{display:flex}
+@media (max-width:480px){
+  .doc{padding:16px}
+  .btns[data-l]{flex-direction:column}
+  .hero{padding:16px 0 26px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a class="back" href="https://swimmingmoldova.com/">← <span data-l="ru">swimmingmoldova.com</span><span data-l="ro">swimmingmoldova.com</span></a>
+      <div class="lang" role="group" aria-label="Язык / Limba">
+        <button type="button" data-set="ru">RU</button>
+        <button type="button" data-set="ro">RO</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div class="kicker"><span data-l="ru">Спортсменам и тренерам</span><span data-l="ro">Pentru sportivi și antrenori</span></div>
+      <h1><span data-l="ru">WADA · Антидопинг</span><span data-l="ro">WADA · Antidoping</span></h1>
+      <p data-l="ru">Памятки Федерации о лечении и лекарствах, допинг-контроле, пулах тестирования и TUE. Откройте прямо в браузере или скачайте на телефон.</p>
+      <p data-l="ro">Ghidurile Federației despre tratament și medicamente, controlul doping, grupurile de testare și AUT. Deschideți direct în browser sau descărcați pe telefon.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2><span data-l="ru">Документы</span><span data-l="ro">Documente</span></h2>
+  <div class="docs">
+
+    <article class="doc">
+      <div class="dochead">
+        <div class="ico">PDF</div>
+        <div>
+          <h3><span data-l="ru">Памятка спортсмена WADA</span><span data-l="ro">Memento WADA pentru sportivi</span></h3>
+          <p data-l="ru">Термины WADA, порядок действий при вызове на допинг-контроль, пулы RTP и TP, местонахождение (whereabouts), контакты и чек-лист перед выездом.</p>
+          <p data-l="ro">Termenii WADA, pașii la chemarea la controlul doping, grupurile RTP și TP, localizarea (whereabouts), contacte și listă de verificare înainte de plecare.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="tag">PDF · 4 <span data-l="ru">стр.</span><span data-l="ro">pag.</span></span>
+        <span class="tag" data-l="ru">≈ 45 КБ</span><span class="tag" data-l="ro">≈ 40 KB</span>
+      </div>
+      <div class="btns" data-l="ru">
+        <a class="btn primary" href="wada/wada-pamyatka-ru.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Открыть</a>
+        <a class="btn ghost" href="wada/wada-pamyatka-ru.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Скачать</a>
+      </div>
+      <div class="btns" data-l="ro">
+        <a class="btn primary" href="wada/wada-memento-ro.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Deschide</a>
+        <a class="btn ghost" href="wada/wada-memento-ro.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Descarcă</a>
+      </div>
+      <div class="other"><span data-l="ru">Также на румынском: <a href="wada/wada-memento-ro.pdf" target="_blank" rel="noopener">RO</a></span><span data-l="ro">Și în limba rusă: <a href="wada/wada-pamyatka-ru.pdf" target="_blank" rel="noopener">RU</a></span></div>
+    </article>
+
+    <article class="doc alt">
+      <div class="dochead">
+        <div class="ico">PDF</div>
+        <div>
+          <h3><span data-l="ru">Лечение и применение лекарств</span><span data-l="ro">Tratamentul și utilizarea medicamentelor</span></h3>
+          <p data-l="ru">Шесть шагов до начала лечения, экстренная помощь, что такое TUE, критерии выдачи и как подать заявку.</p>
+          <p data-l="ro">Șase pași înainte de tratament, asistența de urgență, ce este AUT (TUE), criteriile de acordare și cum se depune cererea.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="tag" data-l="ru">PDF · 4 стр.</span><span class="tag" data-l="ro">PDF · 3 pag.</span>
+        <span class="tag" data-l="ru">≈ 45 КБ</span><span class="tag" data-l="ro">≈ 35 KB</span>
+      </div>
+      <div class="btns" data-l="ru">
+        <a class="btn primary" href="wada/wada-lechenie-ru.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Открыть</a>
+        <a class="btn ghost" href="wada/wada-lechenie-ru.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Скачать</a>
+      </div>
+      <div class="btns" data-l="ro">
+        <a class="btn primary" href="wada/wada-tratament-ro.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Deschide</a>
+        <a class="btn ghost" href="wada/wada-tratament-ro.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>Descarcă</a>
+      </div>
+      <div class="other"><span data-l="ru">Также на румынском: <a href="wada/wada-tratament-ro.pdf" target="_blank" rel="noopener">RO</a></span><span data-l="ro">Și în limba rusă: <a href="wada/wada-lechenie-ru.pdf" target="_blank" rel="noopener">RU</a></span></div>
+    </article>
+
+  </div>
+
+  <h2><span data-l="ru">Полезные ссылки</span><span data-l="ro">Linkuri utile</span></h2>
+  <div class="links">
+    <a class="link" href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener"><b><span data-l="ru">Запрещённый список WADA</span><span data-l="ro">Lista interzisă WADA</span></b><span data-l="ru">Актуальный список субстанций и методов</span><span data-l="ro">Substanțele și metodele interzise în vigoare</span> <i>wada-ama.org ↗</i></a>
+    <a class="link" href="https://www.globaldro.com" target="_blank" rel="noopener"><b>Global DRO</b><span data-l="ru">Проверка лекарств по составу</span><span data-l="ro">Verificarea medicamentelor după compoziție</span> <i>globaldro.com ↗</i></a>
+    <a class="link" href="https://ita.sport/tue-assistant/" target="_blank" rel="noopener"><b>ITA TUE Assistant</b><span data-l="ru">Куда и как подавать заявку на TUE</span><span data-l="ro">Unde și cum se depune cererea de AUT</span> <i>ita.sport ↗</i></a>
+    <a class="link" href="https://adams.wada-ama.org" target="_blank" rel="noopener"><b>ADAMS</b><span data-l="ru">Вход для спортсменов из пулов тестирования</span><span data-l="ro">Acces pentru sportivii din grupurile de testare</span> <i>wada-ama.org ↗</i></a>
+    <a class="link" href="https://adel.wada-ama.org" target="_blank" rel="noopener"><b>ADEL</b><span data-l="ru">Антидопинговое обучение и сертификаты WADA</span><span data-l="ro">Instruire antidoping și certificate WADA</span> <i>wada-ama.org ↗</i></a>
+    <a class="link" href="https://aquaticsintegrity.com/" target="_blank" rel="noopener"><b>AQIU · World Aquatics</b><span data-l="ru">Требования для стартов World Aquatics</span><span data-l="ro">Cerințe pentru competițiile World Aquatics</span> <i>aquaticsintegrity.com ↗</i></a>
+  </div>
+
+  <h2><span data-l="ru">Контакты</span><span data-l="ro">Contacte</span></h2>
+  <div class="contacts">
+    <div><h4>FISN</h4><p><a href="mailto:swimming.md@gmail.com">swimming.md@gmail.com</a><br><span data-l="ru">копия:</span><span data-l="ro">copie:</span> <a href="mailto:birou.fisn@gmail.com">birou.fisn@gmail.com</a></p></div>
+    <div><h4>ANAD Moldova</h4><p><a href="mailto:officeagency@anad.gov.md">officeagency@anad.gov.md</a><br><a href="tel:+37322820815">+373 22 820 815</a></p></div>
+    <div><h4>ITA · World Aquatics (TUE)</h4><p><a href="mailto:tue@ita.sport">tue@ita.sport</a></p></div>
+  </div>
+  <div class="note" data-l="ru">Медицинские документы не отправляйте в общий почтовый ящик или командный чат — только по защищённому каналу, который укажет получатель.</div>
+  <div class="note" data-l="ro">Nu trimiteți documente medicale în căsuța poștală comună sau în chatul echipei — doar pe canalul securizat indicat de destinatar.</div>
+</main>
+
+<footer>© FISN · Federația de Natație Sportivă din Moldova</footer>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('lang'), saved=null;
+  try{saved=localStorage.getItem('fisn-lang')}catch(e){}
+  function set(l,save){
+    document.documentElement.lang=l;
+    document.title=l==='ro'?'WADA · Antidoping · FISN':'WADA · Антидопинг · FISN';
+    document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.set===l)});
+    if(save){try{localStorage.setItem('fisn-lang',l)}catch(e){}}
+  }
+  set(p==='ro'||p==='ru'?p:(saved==='ro'?'ro':'ru'));
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set,true)})});
+})();
+</script>
+</body>
+</html>
