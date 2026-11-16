@@ -6050,6 +6050,33 @@
     .tab { font-size: 9px !important; padding: 8px 9px !important; }
   }
 
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ: единые исправления (профиль, таблицы, вкладки) ===== */
+@media (max-width: 700px) {
+  .tabs { position: static !important; }
+  .profile-overlay { padding: 0 !important; background: #fff !important; backdrop-filter: none !important; }
+  .profile-modal {
+    width: 100% !important; max-width: 100% !important;
+    height: auto !important; max-height: none !important; min-height: 100dvh !important;
+    margin: 0 !important; border: 0 !important; border-radius: 0 !important;
+    overflow: visible !important; display: block !important; box-shadow: none !important; animation: none !important;
+  }
+  .profile-header {
+    position: sticky !important; top: 0 !important; z-index: 20 !important;
+    display: flex !important; flex-direction: row !important; align-items: center !important;
+    text-align: left !important; gap: 12px !important; padding: 12px 58px 12px 12px !important;
+  }
+  .profile-stats { margin: 14px 12px 6px !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; position: static !important; }
+  .profile-body { padding: 12px !important; overflow: visible !important; max-height: none !important; }
+  .profile-close { position: fixed !important; top: 10px !important; right: 10px !important; z-index: 30 !important; }
+  .table-scroll-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .nr-table, .res-table { min-width: 0 !important; }
+  .res-table th, .res-table td { padding: 8px 6px !important; font-size: 12px !important; white-space: nowrap; }
+  .res-table .event-cell { position: sticky; left: 0; z-index: 2; background: #fff; min-width: 96px; box-shadow: 2px 0 4px rgba(10,61,107,.08); }
+  .res-table thead .event-cell { background: #eef4fa; }
+  .res-table th { white-space: normal !important; font-size: 10.5px !important; line-height: 1.2 !important; min-width: 62px; text-align: center; }
+  .res-table th.event-cell { white-space: nowrap !important; text-align: left; }
+}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
 
@@ -6895,8 +6922,9 @@ function fmtDelta(d) {
 }
 
 function buildPoolTable(events) {
+  const used = compLabels.map((_, i) => events.some(e => e.times[i]));
   const rows = events.map(e => {
-    const cells = e.times.map(t => t ? `<td>${t}</td>` : '<td style="color:#ccc">—</td>').join('');
+    const cells = e.times.map((t, i) => !used[i] ? '' : (t ? `<td>${t}</td>` : '<td style="color:#ccc">—</td>')).join('');
     return `<tr>
       <td class="event-cell">${translateEvent(e.event)}</td>
       ${cells}
@@ -6909,7 +6937,7 @@ function buildPoolTable(events) {
     <table class="res-table">
       <thead><tr>
         <th class="event-cell">${t('label_distance')}</th>
-        ${compLabels.map(l => `<th>${l}</th>`).join('')}
+        ${compLabels.map((l, i) => used[i] ? `<th>${l}</th>` : '').join('')}
         <th data-i18n="label_best">label_best</th><th data-i18n="label_delta">label_delta</th>
       </tr></thead>
       <tbody>${rows}</tbody>
